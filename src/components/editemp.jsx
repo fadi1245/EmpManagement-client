@@ -17,9 +17,9 @@ function Editpage() {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        // Use the correct API endpoint for fetching the employee
+        
         const response = await axios.get(`http://localhost:5000/emp/getemp/${id}`);
-        setFormData(response.data.data); // Access the data correctly
+        setFormData(response.data.data);
       } catch (err) {
         console.error(err);
         toast.error('Failed to fetch employee details.');
@@ -39,16 +39,16 @@ function Editpage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate salary
+    
     if (isNaN(formData.salary) || formData.salary <= 0) {
       toast.error('Please enter a valid salary');
       return;
     }
 
     try {
-      // Make the correct API request for updating the employee
+      
       const response = await axios.put(`http://localhost:5000/emp/updateemp/${id}`, formData);
-      toast.success(response.data.message); // Correct message field
+      toast.success(response.data.message); 
       navigate('/');
     } catch (err) {
       console.error(err);
